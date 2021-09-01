@@ -4,7 +4,7 @@ import {
   FormControl,
   FormGroup,
   Validators,
-  NgForm
+  NgForm,
 } from '@angular/forms';
 
 @Component({
@@ -15,7 +15,7 @@ import {
 export class DemographicsComponent implements OnInit {
   demoForm: FormGroup;
   firstname: string = '';
-  //lastname: string = '';
+  lastname: string = '';
   constructor(private formbuilder: FormBuilder) {
     this.demoForm = formbuilder.group({
       firstname: new FormControl('', [
@@ -26,16 +26,16 @@ export class DemographicsComponent implements OnInit {
         Validators.required,
         Validators.minLength(10),
       ]),
-      gender: new FormControl(),
-      ethnicity: new FormControl(),
-      education: new FormControl(),
-      occupation: new FormControl(),
-      address: new FormControl(),
-      phone: new FormControl(),
-      medical: new FormControl(),
-      familymedical: new FormControl(),
-      surgeries: new FormControl(),
-      insurance: new FormControl(),
+      gender: new FormControl('', [Validators.required]),
+      ethnicity: new FormControl('', [Validators.required]),
+      education: new FormControl('', [Validators.required]),
+      occupation: new FormControl('', [Validators.required]),
+      address: new FormControl('', [Validators.required]),
+      phone: new FormControl('', [Validators.required]),
+      medical: new FormControl('', [Validators.required]),
+      familymedical: new FormControl('', [Validators.required]),
+      surgeries: new FormControl('', [Validators.required]),
+      insurance: new FormControl('', [Validators.required]),
     });
   }
 

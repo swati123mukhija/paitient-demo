@@ -6,13 +6,12 @@ import { DemographicsComponent } from './components/demographics/demographics.co
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatButtonModule } from '@angular/material/button';
 @NgModule({
-  declarations: [
-    DemographicsComponent
-  ],
+  declarations: [DemographicsComponent],
   imports: [
     CommonModule,
     DemographicsRoutingModule,
@@ -21,7 +20,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatSelectModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    MatDatepickerModule
-  ]
+    MatDatepickerModule,
+    MatButtonModule,
+  ],
 })
-export class DemographicsModule { }
+export class DemographicsModule {}
