@@ -1,9 +1,12 @@
-<section class="container my-5" fxLayoutAlign="space-evenly center">
+<section
+  class="container my-5 border border-dark"
+  fxLayoutAlign="space-evenly center"
+>
   <form
     [formGroup]="demoForm"
     (ngSubmit)="onSubmit()"
     fxLayout="column"
-    class="border border-dark p-3"
+    class="p-3 w-100"
   >
     <div class="p-3 mb-2 bg-primary text-white">
       <h2>Patient Portal</h2>
@@ -75,7 +78,7 @@
       <mat-label for="phone" class="col-sm-2 col-form-label"
         >Contact Information
       </mat-label>
-      <input id="phone" type="text" matInput formControlName="phone" />
+      <input id="phone" type="text" matInput formControlName="phone" (keypress)="keyPress($event)"/>
     </mat-form-field>
 
     <mat-form-field>
