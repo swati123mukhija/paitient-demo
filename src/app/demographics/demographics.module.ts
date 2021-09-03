@@ -10,6 +10,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
+import { HttpClientModule } from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
 @NgModule({
   declarations: [DemographicsComponent],
   imports: [
@@ -22,6 +24,8 @@ import { MatButtonModule } from '@angular/material/button';
     FlexLayoutModule,
     MatDatepickerModule,
     MatButtonModule,
+    HttpClientModule,
+    MatCardModule,
   ],
 })
 export class DemographicsModule {}

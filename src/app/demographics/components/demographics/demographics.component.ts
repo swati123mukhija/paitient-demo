@@ -6,6 +6,9 @@ import {
   Validators,
   NgForm,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Demographics } from '../../model/demographics';
+import { DemographicsService } from '../../services/demographics.service';
 
 @Component({
   selector: 'app-demographics',
@@ -13,14 +16,32 @@ import {
   styleUrls: ['./demographics.component.scss'],
 })
 export class DemographicsComponent implements OnInit {
+  demographics: Demographics = {
+    address: '',
+    education: '',
+    ethnicity: '',
+    familymedical: '',
+    firstname: '',
+    gender: '',
+    insurance: '',
+    lastname: '',
+    medical: '',
+    occupation: '',
+    phone: '',
+  };
+  errors: any = {};
   demoForm: FormGroup;
   firstname: string = '';
   lastname: string = '';
-  constructor(private formbuilder: FormBuilder) {
+  constructor(
+    private formbuilder: FormBuilder,
+    private demographicsService: DemographicsService,
+    private router: Router
+  ) {
     this.demoForm = formbuilder.group({
       firstname: new FormControl('', [
         Validators.required,
-        Validators.minLength(10),
+        Validators.minLength(5),
       ]),
       lastname: new FormControl('', [
         Validators.maxLength(15),
@@ -56,6 +77,15 @@ export class DemographicsComponent implements OnInit {
   onSubmit() {
     // TODO: Use EventEmitter with form value
     console.warn(this.demoForm.value);
+    /*this.demographicsService.getDemography().subscribe(
+      (res) => {
+        console.log(JSON.stringify(res));
+      },
+      (err) => {
+        console.log(JSON.stringify(err));
+        this.errors = err.error;
+      }
+    );*/
   }
 
   ngOnInit(): void {}
