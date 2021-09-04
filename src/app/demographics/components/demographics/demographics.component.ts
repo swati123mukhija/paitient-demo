@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
   NgForm,
+  AbstractControl,
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Demographics } from '../../model/demographics';
@@ -66,26 +67,37 @@ export class DemographicsComponent implements OnInit {
     });
   }
 
+  getControl(key: string): AbstractControl | null {
+    return this.demoForm.get(key);
+  }
+
   //only number will be add
   keyPress(event: any) {
     const pattern = /[0-9\+\-\ ]/;
     let inputChar = String.fromCharCode(event.charCode);
     if (event.keyCode != 8 && !pattern.test(inputChar)) {
       event.preventDefault();
+      return false;
     }
+    return true;
   }
   onSubmit() {
     // TODO: Use EventEmitter with form value
-    console.warn(this.demoForm.value);
-    /*this.demographicsService.getDemography().subscribe(
-      (res) => {
-        console.log(JSON.stringify(res));
-      },
-      (err) => {
-        console.log(JSON.stringify(err));
-        this.errors = err.error;
-      }
-    );*/
+    console.log(this.demoForm.value);
+    if (this.demoForm.valid) {
+      this.demographicsService.saveDemography(this.demoForm.value).subscribe(
+        (res: any) => {
+          this.demoForm.reset();
+          console.log(JSON.stringify(res));
+        },
+        (err: any) => {
+          console.log(JSON.stringify(err));
+          this.errors = err.error;
+        }
+      );
+    } else {
+      this.demoForm.markAsTouched();
+    }
   }
 
   ngOnInit(): void {}

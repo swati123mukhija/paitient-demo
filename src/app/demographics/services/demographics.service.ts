@@ -6,9 +6,12 @@ import { Observable } from 'rxjs';
 })
 export class DemographicsService {
   api = '/demographics';
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   /* getDemography(): Observable<any> {
     return this.httpclient.get(this.api);
   }*/
+  saveDemography(data: any): Observable<any> {
+    return this.http.post(this.api, data);
+  }
 }
