@@ -30,10 +30,12 @@ export class DemographicsComponent implements OnInit {
     occupation: '',
     phone: '',
   };
+
   errors: any = {};
   demoForm: FormGroup;
   firstname: string = '';
   lastname: string = '';
+
   constructor(
     private formbuilder: FormBuilder,
     private demographicsService: DemographicsService,
