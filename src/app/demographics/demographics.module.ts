@@ -12,6 +12,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
+import { DemographicsService } from './services/demographics.service';
 @NgModule({
   declarations: [DemographicsComponent],
   imports: [
@@ -27,5 +28,6 @@ import { MatCardModule } from '@angular/material/card';
     HttpClientModule,
     MatCardModule,
   ],
+  providers: [DemographicsService],
 })
 export class DemographicsModule {}

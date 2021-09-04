@@ -18,6 +18,18 @@
             name="firstname"
           />
         </mat-form-field>
+        <div
+          *ngIf="
+            getControl('firstname')?.touched && getControl('firstname')?.errors
+          "
+        >
+          <p *ngIf="getControl('firstname')?.errors?.required">
+            First Name is required
+          </p>
+          <p *ngIf="getControl('firstname')?.errors?.minlength">
+            Enter atleast 5 chars for first name
+          </p>
+        </div>
 
         <mat-form-field fxLayoutAlign="space-between">
           <mat-label for="last-name">Last Name </mat-label>
@@ -41,7 +53,7 @@
 
         <mat-form-field fxLayoutAlign="space-between">
           <mat-label>Gender</mat-label>
-          <mat-select>
+          <mat-select formControlName="gender">
             <mat-option value="male">Male</mat-option>
             <mat-option value="female">female</mat-option>
           </mat-select>
@@ -180,4 +192,7 @@
       </div>
     </mat-card>
   </mat-card>
+  <div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
 </form>
